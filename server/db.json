@@ -1,0 +1,87 @@
+{
+  "posts": [
+    {
+      "id": "react-hooks",
+      "title": "React Hooks",
+      "content": "The greatest thing since sliced bread!",
+      "author": "Daniel Bugl"
+    },
+    {
+      "id": "react-fragments",
+      "title": "Using React Fragments",
+      "content": "Keeping the DOM tree clean!",
+      "author": "Daniel Bugl"
+    },
+    {
+      "title": "Cruzeiro",
+      "content": "Vai cair para série B.\n",
+      "author": "Bruno",
+      "id": "-Z2S8vp"
+    },
+    {
+      "title": "Avengers",
+      "content": "salvamos a terra",
+      "author": "Tony",
+      "id": "OBWavb7"
+    },
+    {
+      "title": "teste",
+      "content": "teste ",
+      "author": "Tony",
+      "id": "8a3KjLO"
+    },
+    {
+      "title": "Azul",
+      "content": "Prominas",
+      "author": "Tony",
+      "id": "OsxfrF5"
+    },
+    {
+      "title": "Tony Stark",
+      "content": "Este cara é demais",
+      "author": "Tony",
+      "id": "d-4zcxK"
+    },
+    {
+      "title": "Steve",
+      "content": "Voltou para o passado, será que ele me encontrou?",
+      "author": "Tony",
+      "id": "GXj0jDu"
+    },
+    {
+      "title": "bruce banner",
+      "content": "onde ele está?",
+      "author": "Tony",
+      "id": "BcO4NoI"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "Daniel Bugl",
+      "password": "supersecure42"
+    },
+    {
+      "username": "Tony",
+      "password": "123456",
+      "id": 2
+    }
+  ],
+  "themes": [
+    {
+      "id": 1,
+      "primaryColor": "deepskyblue",
+      "secondaryColor": "coral"
+    },
+    {
+      "id": 2,
+      "primaryColor": "orchid",
+      "secondaryColor": "mediumseagreen"
+    },
+    {
+      "id": 3,
+      "primaryColor": "darkslategray",
+      "secondaryColor": "slategray"
+    }
+  ]
+}
