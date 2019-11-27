@@ -7,7 +7,6 @@ import { StateContext } from '../contexts'
 export default function HomePage() {
     const { state, dispatch } = useContext(StateContext)
     const { error } = state
-
     const [posts, getPosts] = useResource(() => ({
         url: 'posts',
         method: 'get'
@@ -21,7 +20,7 @@ export default function HomePage() {
 
         if (posts && posts.data)
             dispatch({ type: 'FETCH_POSTS', posts: posts.data.reverse() })
-    }, [posts])
+    }, [dispatch, posts])
 
     return (
         <div>

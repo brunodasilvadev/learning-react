@@ -1,21 +1,20 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { useResource } from 'react-request-hook'
+import React, { useEffect } from 'react'
 import { useNavigation } from 'react-navi'
 import { useInput } from 'react-hookedup'
-import { StateContext } from '../contexts'
+
+import { useUserState, useDispatch, useDebouncedUndo, useAPICreatePost } from '../hooks'
 
 export default function CreatePost() {
-    const { state, dispatch } = useContext(StateContext);
-    const { user } = state;
-    
+    const user = useUserState()
+    const dispatch = useDispatch()
+    const [post, createPost] = useAPICreatePost()
     const { value: title, bindToInput: bindTitle } = useInput('')
-    const { value: content, bindToInput: bindContent } = useInput('')
-    
-    const [post, createPost] = useResource(({ title, content, author }) => ({
-        url: '/posts',
-        method: 'post',
-        data: { title, content, author }
-    }))
+    const [content, setContent, { undo, redo, canUndo, canRedo }] = useDebouncedUndo()
+
+    function handleContent(e) {
+        const { value } = e.target
+        setContent(value)
+    }
 
     const navigation = useNavigation()
 
@@ -24,7 +23,7 @@ export default function CreatePost() {
             dispatch({ type: 'CREATE_POST', ...post.data })
             navigation.navigate(`/view/${post.data.id}`)
         }
-    }, [post])
+    }, [dispatch, navigation, post])
 
     function handleCreate() {
         createPost({ title, content, author: user })
@@ -42,7 +41,9 @@ export default function CreatePost() {
                     name="create-title"
                     id="create-title" />
             </div>
-            <textarea value={content} {...bindContent} />
+            <textarea value={content} onChange={handleContent} />
+            <button type="button" onClick={undo} disabled={!canUndo}>Undo</button>
+            <button type="button" onClick={redo} disabled={!canRedo}>Redo</button>
             <input type="submit" value="Create" />
         </form>
     )

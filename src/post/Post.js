@@ -1,16 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-navi'
 
-import { ThemeContext } from '../contexts'
+import { useTheme } from '../hooks'
 
 function Post({ id, title, content, author, short = false }) {
     let processedContent = content
+    
     if (short) {
         if (content.length > 30) 
             processedContent = content.substring(0, 30) + '...'
     }
     
-    const { secondaryColor } = useContext(ThemeContext);
+    const { secondaryColor } = useTheme()
 
     return (
         <div>

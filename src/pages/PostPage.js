@@ -9,6 +9,7 @@ export default function PostPage({ id }) {
         url: `/posts/${id}`,
         method: 'get'
     }))
+    
     useEffect(getPost, [id])
 
     return (
